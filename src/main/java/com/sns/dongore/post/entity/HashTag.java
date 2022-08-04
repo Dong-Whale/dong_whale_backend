@@ -20,6 +20,6 @@ public class HashTag {
     String tagName;
     
     @OneToMany(mappedBy = "post")
-    Set<HashTagRegistration> posts;
+    List<HashTagRegistration> posts;
 }
 

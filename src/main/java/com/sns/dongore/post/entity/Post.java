@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity @Getter @AllArgsConstructor
@@ -16,6 +17,9 @@ public class Post {
     private Long id;
     private String title;
     private String text;
+
+    @ElementCollection
+    private List<String> photos;
 
     @OneToMany(mappedBy = "hashTag")
     Set<HashTagRegistration> hashTags;

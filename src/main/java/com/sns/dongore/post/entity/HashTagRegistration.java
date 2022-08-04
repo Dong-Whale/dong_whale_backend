@@ -1,8 +1,11 @@
 package com.sns.dongore.post.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class HashTagRegistration {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
