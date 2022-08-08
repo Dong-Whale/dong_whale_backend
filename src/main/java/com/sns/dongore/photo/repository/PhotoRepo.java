@@ -1,14 +1,16 @@
 package com.sns.dongore.photo.repository;
 
-import java.nio.file.Path;
-import java.util.stream.Stream;
-import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
+import java.util.Optional;
 
-public interface PhotoRepo {
-    public void init();
-    public void save(MultipartFile file);
-    public Resource load(String filename);
+import com.sns.dongore.photo.entity.Photo;
+import com.sns.dongore.post.entity.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PhotoRepo extends JpaRepository<Photo, Long> {
+    public Photo save(Photo Photo);
     public void deleteAll();
-    public Stream<Path> loadAll();
+    public Optional<Photo> findById(Long id);
 }

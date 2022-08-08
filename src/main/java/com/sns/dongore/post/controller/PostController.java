@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +31,7 @@ public class PostController {
     final private PhotoService photoService;
 
     @PostMapping("/post")
-    ResponseEntity<?> makePost(PostDTO postDto){
+    ResponseEntity<?> makePost(PostDTO postDto) throws IOException {
         // Post 저장 부분
         Post post = Post.builder().text(postDto.getText())
                 .pubDate(new Date())
@@ -38,12 +39,7 @@ public class PostController {
                 .photos(new ArrayList<>())
                 .build();
         postService.save(post);
-
-        // Photo 저장 부분
-        for(MultipartFile photo : postDto.getPhotos()){
-            String url = photoService.upload(photo);
-
-        }
+        photoService.uploadAll(post, postDto.getPhotos());
 
         log.info(postDto.getHashTags().toString());
         for(String hashTagName : postDto.getHashTagArray()){

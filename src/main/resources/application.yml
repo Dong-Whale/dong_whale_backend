@@ -23,6 +23,7 @@ logging:
 
 amazon:
     aws:
+        bucket-name : bucketeer-7db48d7b-1395-4b1b-8695-5abc6f2e95d1
         region: us-east-1
         access-key : AKIAX7CRDYXP5SOHEMUF
         secret-key : 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

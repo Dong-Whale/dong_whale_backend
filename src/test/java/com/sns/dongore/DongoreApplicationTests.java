@@ -1,5 +1,6 @@
 package com.sns.dongore;
 
+import com.sns.dongore.photo.entity.Photo;
 import com.sns.dongore.post.entity.Post;
 import com.sns.dongore.post.repository.PostRepo;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ class DongoreApplicationTests {
 	@Test
 	public void 포스트저장확인() throws Exception{
 	    //given
-		Post post = new Post(null, "wow", new Date(), new Date(), new ArrayList<String>());
+		Post post = new Post(null, "wow", new Date(), new Date(), new ArrayList<Photo>());
 
 	    //when
 		postRepo.save(post);

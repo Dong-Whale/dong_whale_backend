@@ -31,6 +31,6 @@ public class Post {
     }
 
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Photo> photos;
 }
