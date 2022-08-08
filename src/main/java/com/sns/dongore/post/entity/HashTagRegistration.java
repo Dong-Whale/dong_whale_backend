@@ -1,19 +1,27 @@
 package com.sns.dongore.post.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
 public class HashTagRegistration {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
-    @ManyToOne @JoinColumn(name = "hashtag_id")
-    HashTag hashTag;
 
-    @ManyToOne @JoinColumn(name = "post_id")
-    Post post;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "hashtag_id")
+    private HashTag hashTag;
+
 }
