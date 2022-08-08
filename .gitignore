@@ -37,3 +37,6 @@ out/
 .vscode/
 h2/
 db/
+
+### credentials ###
+src/main/resources/application.yml
