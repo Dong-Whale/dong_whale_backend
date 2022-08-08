@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5433/postgres
+        url: jdbc:postgresql://localhost:5433/template1
         username: postgres
         password:
         driverClassName: org.postgresql.Driver
@@ -10,13 +10,20 @@ spring:
     jpa:
         hibernate :
             dialect : org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto : update
-        show_sql : true
-        format_sql : true
+            ddl-auto : update
+        properties:
+            hibernate :
+                show_sql : true
+                format_sql : true
 
-# setting log level
-# hibernate? ???? ?? sql ?? ??? ??.
 logging:
     level:
         org.hibernate.SQL : debug
         org.hibernate.type : trace
+
+amazon:
+    aws:
+        bucket-name : bucketeer-7db48d7b-1395-4b1b-8695-5abc6f2e95d1
+        region: us-east-1
+        access-key : AKIAX7CRDYXP5SOHEMUF
+        secret-key : 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
